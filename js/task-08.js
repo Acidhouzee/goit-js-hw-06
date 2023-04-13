@@ -25,14 +25,15 @@ const password = document.querySelector('[type="password"]');
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  if (!useremail.value || !password.value) {
-    return alert('Все поля должны быть заполнены!')
-  } else {
-    const {
-        elements: { useremail, password }
-    } = event.currentTarget;
+  const elements = {
+    email: useremail.value,
+    pass: password.value
   }
-  console.log(`Login: ${useremail.value}, Password: ${password.value}`);
+  
+  if (useremail.value === '' || password.value === '') {
+    return alert('Все поля должны быть заполнены!')
+  }
+  console.log(elements);
   
   form.reset();
 });

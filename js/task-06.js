@@ -26,14 +26,17 @@
 const inputText =  document.querySelector('#validation-input');
 const currentValue = inputText.getAttribute('data-length');
 
+function addOrRemoveClass(added, removed) {
+    inputText.classList.add(added);
+    inputText.classList.remove(removed);
+}
+
 inputText.addEventListener('input', (event) => {
     const inputValue = String(event.currentTarget.value.length);
     
     if(inputValue === currentValue) {
-        inputText.classList.add('valid');
-        inputText.classList.remove('invalid');
+        addOrRemoveClass('valid', 'invalid');
     } else {
-        inputText.classList.add('invalid');
-        inputText.classList.remove('valid');
+        addOrRemoveClass('invalid', 'valid');
     }
 });
